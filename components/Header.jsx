@@ -5,7 +5,7 @@ import React from "react";
 const Header = () => {
   return (
     <div>
-    Header
+    Header box
     </div>
   );
 };
