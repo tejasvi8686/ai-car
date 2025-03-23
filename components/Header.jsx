@@ -4,20 +4,17 @@ import Link from "next/link";
 import Image from "next/image";
 import { SignedIn, SignedOut, UserButton, SignInButton } from "@clerk/nextjs";
 import { Button } from "@/components/ui/button";
-import { CarFront, Heart, Layout, ArrowLeft } from "lucide-react";
+import { CarFront, Heart, Layout, ArrowLeft, Car } from "lucide-react";
 const Header = ({ isAdminPage = false }) => {
   const isAdmin = false;
   return (
-    <header className="fixed top-0 w-full bg-white/80 backdrop-blur-md z-50 border-b">
+    <header className="fixed top-0 w-full bg-black/20 backdrop-blur-lg z-50 ">
       <nav className="mx-auto px-4 py-4 flex items-center justify-between">
         <Link href={isAdminPage ? "/admin" : "/"} className="flex">
-          <Image
-            src={"/logo.png"}
-            alt="logo"
-            width={200}
-            height={60}
-            className="h-12 w-auto object-contain"
-          />
+          <div className="flex items-center gap-2">
+            <Car className="h-8 w-8 text-blue-400" />
+            <span className="text-xl font-bold text-white">Vehiql AI</span>
+          </div>
           {isAdminPage && <span className="text-sm text-gray-500">Admin</span>}
         </Link>
 
