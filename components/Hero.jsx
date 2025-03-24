@@ -1,7 +1,10 @@
 "use client";
 
-import { Search, Car, Calendar, Star } from "lucide-react";
-
+import { Search, Car, Calendar, Star, ChevronRight } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { featuredCars } from "@/lib/data";
+import CarCard from "./CarCard";
+import Link from "next/link";
 export default function Hero() {
   return (
     <main>
@@ -27,7 +30,7 @@ export default function Hero() {
               Find your Dream Car with{" "}
               <span className="text-blue-400">Vehiql AI</span>
             </h1>
-            <p className="text-xl md:text-2xl text-gray-200 mb-12 max-w-3xl mx-auto">
+            <p className="text-xl  md:text-2xl text-gray-200 mb-12 max-w-3xl mx-auto">
               Advanced AI Car Search and test drive from thousands of vehicles
             </p>
 
@@ -90,6 +93,25 @@ export default function Hero() {
           </div>
         </div>
       </div>
+
+      {/* Featured Cars Section */}
+      <section className="py-12">
+        <div className="container mx-auto px-4">
+          <div className="flex justify-between items-center mb-8">
+            <h2 className="text-2xl font-bold">Featured Cars</h2>
+            <Button variant="ghost" className="flex items-center" asChild>
+              <Link href="/cars">
+                View All <ChevronRight className="ml-1 w-4 h-4" />
+              </Link>
+            </Button>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {featuredCars.map((car) => (
+              <CarCard key={car.id} car={car} />
+            ))}
+          </div>
+        </div>
+      </section>
     </main>
   );
 }
