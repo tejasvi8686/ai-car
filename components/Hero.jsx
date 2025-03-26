@@ -1,11 +1,25 @@
 "use client";
 
-import { Search, Car, Calendar, Star, ChevronRight } from "lucide-react";
+import { Search, Car, Calendar, Star, ChevronRight, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
-import { featuredCars, carMakes, features, bodyTypes } from "@/lib/data";
+import {
+  featuredCars,
+  carMakes,
+  features,
+  bodyTypes,
+  faqItems,
+} from "@/lib/data";
+import {
+  Accordion,
+  AccordionItem,
+  AccordionTrigger,
+  AccordionContent,
+} from "@/components/ui/accordion";
 import CarCard from "./CarCard";
 import Link from "next/link";
+import { SignedOut } from "@clerk/nextjs";
+import HomeSearch from "./HomeSearch";
 export default function Hero() {
   return (
     <main>
@@ -36,7 +50,7 @@ export default function Hero() {
             </p>
 
             {/* Search Bar */}
-            <div className="max-w-2xl mx-auto bg-white/10 backdrop-blur-md p-2 rounded-2xl">
+            {/* <div className="max-w-2xl mx-auto bg-white/10 backdrop-blur-md p-2 rounded-2xl">
               <div className="flex items-center bg-white rounded-xl">
                 <div className="flex-1 p-3">
                   <input
@@ -50,7 +64,8 @@ export default function Hero() {
                   <span>Search</span>
                 </button>
               </div>
-            </div>
+            </div> */}
+            <HomeSearch />
 
             {/* Features */}
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-16 max-w-4xl mx-auto">
@@ -217,7 +232,11 @@ export default function Hero() {
                 preferences.
               </p>
             </div>
-            <Button variant="ghost" className="flex items-center group cursor-pointer" asChild>
+            <Button
+              variant="ghost"
+              className="flex items-center group cursor-pointer"
+              asChild
+            >
               <Link href="/cars">
                 View All{" "}
                 <ChevronRight className="ml-1 w-4 h-4 group-hover:translate-x-1 transition-transform" />
@@ -225,12 +244,12 @@ export default function Hero() {
             </Button>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {bodyTypes.map((type) => (
               <Link
                 key={type.name}
-                href={`/cars?bodyType=${type.name.toLowerCase()}`}
-                className="group relative block"
+                href={`/cars?bodyType=${type.name}`}
+                className="group relative cursor-pointer"
               >
                 <div className="relative h-[300px] w-full overflow-hidden rounded-2xl">
                   <Image
@@ -259,12 +278,110 @@ export default function Hero() {
                 </div>
               </Link>
             ))}
-          </div>
+          </section>
         </div>
 
         <div className="absolute -top-24 -right-24 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl" />
         <div className="absolute -bottom-24 -left-24 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl" />
       </section>
+
+      {/* FAQ Section with Accordion */}
+      <section className="py-12 bg-gray-50">
+        <div className="container mx-auto px-4">
+          <h2 className="text-4xl font-bold text-center mb-8">
+            Frequently Asked Questions
+          </h2>
+          <Accordion type="single" collapsible className="w-full">
+            {faqItems.map((faq, index) => (
+              <AccordionItem key={index} value={`item-${index}`}>
+                <AccordionTrigger className="text-lg font-medium text-gray-700 hover:text-gray-900 transition">
+                  {faq.question}
+                </AccordionTrigger>
+                <AccordionContent className="text-gray-600 text-sm leading-relaxed">
+                  {faq.answer}
+                </AccordionContent>
+              </AccordionItem>
+            ))}
+          </Accordion>
+        </div>
+      </section>
+
+      
+      {/* CTA Section */}
+      <section className="relative py-20 overflow-hidden">
+  
+      <div
+        className="absolute inset-0 z-0"
+        style={{
+          backgroundImage:
+            "url('https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?ixlib=rb-1.2.1&auto=format&fit=crop&w=2850&q=80')",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+        }}
+      >
+        <div className="absolute inset-0 bg-black/50" />
+      </div>
+
+
+      <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
+        <div className="absolute -top-24 -left-24 w-96 h-96 bg-white/10 rounded-full blur-3xl"></div>
+        <div className="absolute top-1/2 -right-24 w-80 h-80 bg-white/10 rounded-full blur-3xl"></div>
+      </div>
+
+      <div className="container relative mx-auto px-4 text-center">
+        <div className="inline-flex items-center justify-center px-4 py-1.5 mb-6 text-sm font-medium rounded-full bg-white/10 text-white backdrop-blur-sm border border-white/10">
+          <Car className="w-4 h-4 mr-2" />
+          <span>Premium Car Selection</span>
+        </div>
+
+        <h2 className="text-4xl md:text-5xl font-bold mb-6 text-white max-w-3xl mx-auto leading-tight">
+          Ready to Find Your{" "}
+          <span className="text-white/90 underline decoration-4 decoration-secondary underline-offset-4">
+            Dream Car
+          </span>
+          ?
+        </h2>
+
+        <p className="text-xl text-white/80 mb-10 max-w-2xl mx-auto">
+          Join thousands of satisfied customers who found their perfect vehicle through our platform.
+        </p>
+
+        <div className="flex flex-col sm:flex-row justify-center gap-4 items-center">
+          <Button
+            size="lg"
+            variant="secondary"
+            className="w-full sm:w-auto px-8 font-medium text-base shadow-lg hover:shadow-xl transition-all"
+            asChild
+          >
+            <Link href="/cars">View All Cars</Link>
+          </Button>
+
+          <SignedOut>
+              <Button size="lg" asChild>
+                <Link href="/sign-up">Sign Up Now</Link>
+              </Button>
+            </SignedOut>
+        </div>
+
+        {/* <div className="mt-12 flex items-center justify-center gap-4">
+          <div className="flex -space-x-2">
+            {[1, 2, 3, 4].map((i) => (
+              <div
+                key={i}
+                className="w-8 h-8 rounded-full border-2 border-white bg-primary-foreground/30 flex items-center justify-center text-xs font-medium text-white"
+              >
+                {i}
+              </div>
+            ))}
+          </div>
+          <p className="text-sm text-white/70">
+            <span className="font-semibold text-white">1,200+</span> cars found this month
+          </p>
+        </div> */}
+      </div>
+    </section>
+
+
     </main>
   );
 }
