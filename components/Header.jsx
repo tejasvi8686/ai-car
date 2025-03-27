@@ -1,12 +1,17 @@
-"use client";
 import React from "react";
 import Link from "next/link";
-import Image from "next/image";
 import { SignedIn, SignedOut, UserButton, SignInButton } from "@clerk/nextjs";
 import { Button } from "@/components/ui/button";
 import { CarFront, Heart, Layout, ArrowLeft, Car } from "lucide-react";
-const Header = ({ isAdminPage = false }) => {
-  const isAdmin = false;
+import { checkUser } from "@/lib/checkUser";
+
+
+const Header = async ({ isAdminPage = false }) => {
+
+  const user = await checkUser();
+  const isAdmin = user?.role === "ADMIN";
+
+
   return (
     <header className="fixed top-0 w-full bg-black/20 backdrop-blur-lg z-50 ">
       <nav className="mx-auto px-4 py-4 flex items-center justify-between">
