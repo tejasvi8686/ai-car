@@ -11,16 +11,18 @@ const Header = async ({ isAdminPage = false }) => {
   const user = await checkUser();
   const isAdmin = user?.role === "ADMIN";
 
+  const headerBg = isAdminPage ? "bg-transparent" : "bg-black/20";
+
 
   return (
-    <header className="fixed top-0 w-full bg-black/20 backdrop-blur-lg z-50 ">
+    <header className={`fixed top-0 w-full ${headerBg} backdrop-blur-lg z-50 `}>
       <nav className="mx-auto px-4 py-4 flex items-center justify-between">
         <Link href={isAdminPage ? "/admin" : "/"} className="flex">
           <div className="flex items-center gap-2">
             <Car className="h-8 w-8 text-blue-400" />
             <span className="text-xl font-bold text-white">Vehiql AI</span>
           </div>
-          {isAdminPage && <span className="text-sm text-gray-500">Admin</span>}
+          {isAdminPage && <span className="text-sm text-black">(Admin)</span>}
         </Link>
 
         <div className="flex items-center space-x-4">
