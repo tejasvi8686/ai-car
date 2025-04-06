@@ -4,8 +4,9 @@ import { Search, Camera, Upload } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useDropzone } from "react-dropzone";
 import { useRouter } from "next/navigation";
+import { processImageSearch } from "@/actions/home";
 import { toast } from "sonner";
-
+import useFetch from "@/hooks/use-fetch";
 const HomeSearch = () => {
   const router = useRouter();
   const [searchTerm, setSearchTerm] = useState("");
@@ -78,6 +79,12 @@ const HomeSearch = () => {
       reader.readAsDataURL(file);
     }
   };
+  const {
+    loading: isProcessing,
+    fn: processImageFn,
+    data: processResult,
+    error: processError,
+  } = useFetch(processImageSearch);
 
   const { getRootProps, getInputProps, isDragActive, isDragReject } =
     useDropzone({
