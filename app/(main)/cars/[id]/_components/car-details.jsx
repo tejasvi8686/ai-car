@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useState, useEffect } from "react";
@@ -110,46 +109,44 @@ export function CarDetails({ car, testDriveInfo }) {
   };
 
   return (
-    <div>
-      <div className="flex flex-col lg:flex-row gap-8">
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <div className="flex flex-col lg:flex-row gap-16">
         {/* Image Gallery */}
         <div className="w-full lg:w-7/12">
-          <div className="aspect-video rounded-lg overflow-hidden relative mb-4">
+          <div className="aspect-video rounded-2xl overflow-hidden relative mb-8 shadow-xl group">
             {car.images && car.images.length > 0 ? (
               <Image
                 src={car.images[currentImageIndex]}
                 alt={`${car.year} ${car.make} ${car.model}`}
                 fill
-                className="object-cover"
+                className="object-cover transition-transform duration-500 group-hover:scale-105"
                 priority
               />
             ) : (
-              <div className="w-full h-full bg-gray-200 flex items-center justify-center">
-                <Car className="h-24 w-24 text-gray-400" />
+              <div className="w-full h-full bg-gradient-to-br from-gray-50 to-gray-100 flex items-center justify-center">
+                <Car className="h-24 w-24 text-gray-300" />
               </div>
             )}
           </div>
 
           {/* Thumbnails */}
           {car.images && car.images.length > 1 && (
-            <div className="flex gap-2 overflow-x-auto pb-2">
+            <div className="flex gap-4 overflow-x-auto pb-4 pt-2 pl-1 scrollbar-hide">
               {car.images.map((image, index) => (
                 <div
                   key={index}
-                  className={`relative cursor-pointer rounded-md h-20 w-24 flex-shrink-0 transition ${
+                  className={`relative cursor-pointer rounded-xl h-28 w-36 flex-shrink-0 transition-all duration-300 ${
                     index === currentImageIndex
-                      ? "border-2 border-blue-600"
-                      : "opacity-70 hover:opacity-100"
+                      ? "ring-2 ring-blue-500 ring-offset-2 shadow-lg"
+                      : "opacity-80 hover:opacity-100 hover:shadow-md"
                   }`}
                   onClick={() => setCurrentImageIndex(index)}
                 >
                   <Image
                     src={image}
-                    alt={`${car.year} ${car.make} ${car.model} - view ${
-                      index + 1
-                    }`}
+                    alt={`${car.year} ${car.make} ${car.model} - view ${index + 1}`}
                     fill
-                    className="object-cover"
+                    className="object-cover rounded-xl"
                   />
                 </div>
               ))}
@@ -157,11 +154,13 @@ export function CarDetails({ car, testDriveInfo }) {
           )}
 
           {/* Secondary Actions */}
-          <div className="flex mt-4 gap-4">
+          <div className="flex mt-8 gap-4">
             <Button
               variant="outline"
-              className={`flex items-center gap-2 flex-1 ${
-                isWishlisted ? "text-red-500" : ""
+              className={`flex items-center gap-2 flex-1 h-12 text-base ${
+                isWishlisted 
+                  ? "text-red-500 border-red-500 hover:bg-red-50 hover:text-red-600" 
+                  : "hover:bg-gray-50"
               }`}
               onClick={handleSaveCar}
               disabled={savingCar}
@@ -173,7 +172,7 @@ export function CarDetails({ car, testDriveInfo }) {
             </Button>
             <Button
               variant="outline"
-              className="flex items-center gap-2 flex-1"
+              className="flex items-center gap-2 flex-1 h-12 text-base hover:bg-gray-50"
               onClick={handleShare}
             >
               <Share2 className="h-5 w-5" />
@@ -183,41 +182,47 @@ export function CarDetails({ car, testDriveInfo }) {
         </div>
 
         {/* Car Details */}
-        <div className="w-full lg:w-5/12">
-          <div className="flex items-center justify-between">
-            <Badge className="mb-2">{car.bodyType}</Badge>
+        <div className="w-full lg:w-5/12 space-y-8">
+          <div className="flex items-center gap-3">
+            <Badge variant="secondary" className="text-sm font-medium px-3 py-1">
+              {car.bodyType}
+            </Badge>
+            <Badge variant="outline" className="text-sm font-medium px-3 py-1">
+              {car.status}
+            </Badge>
           </div>
 
-          <h1 className="text-4xl font-bold mb-1">
-            {car.year} {car.make} {car.model}
-          </h1>
-
-          <div className="text-2xl font-bold text-blue-600">
-            {formatCurrency(car.price)}
+          <div>
+            <h1 className="text-4xl font-bold tracking-tight">
+              {car.year} {car.make} {car.model}
+            </h1>
+            <div className="text-3xl font-bold text-blue-600 mt-3">
+              {formatCurrency(car.price)}
+            </div>
           </div>
 
           {/* Quick Stats */}
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-4 my-6">
-            <div className="flex items-center gap-2">
-              <Gauge className="text-gray-500 h-5 w-5" />
-              <span>{car.mileage.toLocaleString()} miles</span>
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-4 p-6 bg-gray-50 rounded-2xl">
+            <div className="flex items-center gap-3">
+              <Gauge className="text-blue-600 h-5 w-5" />
+              <span className="text-sm font-medium">{car.mileage.toLocaleString()} miles</span>
             </div>
-            <div className="flex items-center gap-2">
-              <Fuel className="text-gray-500 h-5 w-5" />
-              <span>{car.fuelType}</span>
+            <div className="flex items-center gap-3">
+              <Fuel className="text-blue-600 h-5 w-5" />
+              <span className="text-sm font-medium">{car.fuelType}</span>
             </div>
-            <div className="flex items-center gap-2">
-              <Car className="text-gray-500 h-5 w-5" />
-              <span>{car.transmission}</span>
+            <div className="flex items-center gap-3">
+              <Car className="text-blue-600 h-5 w-5" />
+              <span className="text-sm font-medium">{car.transmission}</span>
             </div>
           </div>
 
           <Dialog>
             <DialogTrigger className="w-full text-start">
-              <Card className="pt-5">
-                <CardContent>
-                  <div className="flex items-center gap-2 text-lg font-medium mb-2">
-                    <Currency className="h-5 w-5 text-blue-600" />
+              <Card className="hover:shadow-lg transition-all duration-300">
+                <CardContent className="p-6">
+                  <div className="flex items-center gap-3 text-lg font-medium mb-3">
+                    <Currency className="h-6 w-6 text-blue-600" />
                     <h3>EMI Calculator</h3>
                   </div>
                   <div className="text-sm text-gray-600">
@@ -227,13 +232,13 @@ export function CarDetails({ car, testDriveInfo }) {
                     </span>{" "}
                     for 60 months
                   </div>
-                  <div className="text-xs text-gray-500 mt-1">
+                  <div className="text-xs text-gray-500 mt-2">
                     *Based on $0 down payment and 4.5% interest rate
                   </div>
                 </CardContent>
               </Card>
             </DialogTrigger>
-            <DialogContent>
+            <DialogContent className="sm:max-w-md">
               <DialogHeader>
                 <DialogTitle>Vehiql Car Loan Calculator</DialogTitle>
                 <EmiCalculator price={car.price} />
@@ -242,18 +247,17 @@ export function CarDetails({ car, testDriveInfo }) {
           </Dialog>
 
           {/* Request More Info */}
-          <Card className="my-6">
-            <CardContent className="p-4">
-              <div className="flex items-center gap-2 text-lg font-medium mb-2">
-                <MessageSquare className="h-5 w-5 text-blue-600" />
+          <Card className="hover:shadow-lg transition-all duration-300">
+            <CardContent className="p-6">
+              <div className="flex items-center gap-3 text-lg font-medium mb-3">
+                <MessageSquare className="h-6 w-6 text-blue-600" />
                 <h3>Have Questions?</h3>
               </div>
-              <p className="text-sm text-gray-600 mb-3">
-                Our representatives are available to answer all your queries
-                about this vehicle.
+              <p className="text-sm text-gray-600 mb-4">
+                Our representatives are available to answer all your queries about this vehicle.
               </p>
               <a href="mailto:tejasviraj8686@gmail.com">
-                <Button variant="outline" className="w-full">
+                <Button variant="outline" className="w-full h-11 hover:bg-gray-50">
                   Request Info
                 </Button>
               </a>
@@ -261,7 +265,8 @@ export function CarDetails({ car, testDriveInfo }) {
           </Card>
 
           {(car.status === "SOLD" || car.status === "UNAVAILABLE") && (
-            <Alert variant="destructive">
+            <Alert variant="destructive" className="rounded-xl">
+              <AlertCircle className="h-5 w-5" />
               <AlertTitle className="capitalize">
                 This car is {car.status.toLowerCase()}
               </AlertTitle>
@@ -272,7 +277,7 @@ export function CarDetails({ car, testDriveInfo }) {
           {/* Book Test Drive Button */}
           {car.status !== "SOLD" && car.status !== "UNAVAILABLE" && (
             <Button
-              className="w-full py-6 text-lg"
+              className="w-full h-14 text-lg font-medium hover:shadow-lg transition-all duration-300"
               onClick={handleBookTestDrive}
               disabled={testDriveInfo.userTestDrive}
             >
@@ -289,38 +294,38 @@ export function CarDetails({ car, testDriveInfo }) {
       </div>
 
       {/* Details & Features Section */}
-      <div className="mt-12 p-6 bg-white rounded-lg shadow-sm">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+      <div className="mt-20 p-10 bg-white rounded-3xl shadow-sm">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-16">
           <div>
-            <h3 className="text-2xl font-bold mb-6">Description</h3>
-            <p className="whitespace-pre-line text-gray-700">
+            <h3 className="text-2xl font-bold mb-8">Description</h3>
+            <p className="text-gray-700 leading-relaxed">
               {car.description}
             </p>
           </div>
           <div>
-            <h3 className="text-2xl font-bold mb-6">Features</h3>
-            <ul className="grid grid-cols-1 gap-2">
-              <li className="flex items-center gap-2">
+            <h3 className="text-2xl font-bold mb-8">Features</h3>
+            <ul className="grid grid-cols-1 gap-4">
+              <li className="flex items-center gap-3">
                 <span className="h-2 w-2 bg-blue-600 rounded-full"></span>
-                {car.transmission} Transmission
+                <span className="text-gray-700">{car.transmission} Transmission</span>
               </li>
-              <li className="flex items-center gap-2">
+              <li className="flex items-center gap-3">
                 <span className="h-2 w-2 bg-blue-600 rounded-full"></span>
-                {car.fuelType} Engine
+                <span className="text-gray-700">{car.fuelType} Engine</span>
               </li>
-              <li className="flex items-center gap-2">
+              <li className="flex items-center gap-3">
                 <span className="h-2 w-2 bg-blue-600 rounded-full"></span>
-                {car.bodyType} Body Style
+                <span className="text-gray-700">{car.bodyType} Body Style</span>
               </li>
               {car.seats && (
-                <li className="flex items-center gap-2">
+                <li className="flex items-center gap-3">
                   <span className="h-2 w-2 bg-blue-600 rounded-full"></span>
-                  {car.seats} Seats
+                  <span className="text-gray-700">{car.seats} Seats</span>
                 </li>
               )}
-              <li className="flex items-center gap-2">
+              <li className="flex items-center gap-3">
                 <span className="h-2 w-2 bg-blue-600 rounded-full"></span>
-                {car.color} Exterior
+                <span className="text-gray-700">{car.color} Exterior</span>
               </li>
             </ul>
           </div>
@@ -328,46 +333,46 @@ export function CarDetails({ car, testDriveInfo }) {
       </div>
 
       {/* Specifications Section */}
-      <div className="mt-8 p-6 bg-white rounded-lg shadow-sm">
-        <h2 className="text-2xl font-bold mb-6">Specifications</h2>
-        <div className="bg-gray-50 rounded-lg p-6">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-y-4 gap-x-8">
-            <div className="flex justify-between py-2 border-b">
+      <div className="mt-10 p-10 bg-white rounded-3xl shadow-sm">
+        <h2 className="text-2xl font-bold mb-10">Specifications</h2>
+        <div className="bg-gray-50 rounded-2xl p-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-y-6 gap-x-12">
+            <div className="flex justify-between py-3 border-b border-gray-200">
               <span className="text-gray-600">Make</span>
               <span className="font-medium">{car.make}</span>
             </div>
-            <div className="flex justify-between py-2 border-b">
+            <div className="flex justify-between py-3 border-b border-gray-200">
               <span className="text-gray-600">Model</span>
               <span className="font-medium">{car.model}</span>
             </div>
-            <div className="flex justify-between py-2 border-b">
+            <div className="flex justify-between py-3 border-b border-gray-200">
               <span className="text-gray-600">Year</span>
               <span className="font-medium">{car.year}</span>
             </div>
-            <div className="flex justify-between py-2 border-b">
+            <div className="flex justify-between py-3 border-b border-gray-200">
               <span className="text-gray-600">Body Type</span>
               <span className="font-medium">{car.bodyType}</span>
             </div>
-            <div className="flex justify-between py-2 border-b">
+            <div className="flex justify-between py-3 border-b border-gray-200">
               <span className="text-gray-600">Fuel Type</span>
               <span className="font-medium">{car.fuelType}</span>
             </div>
-            <div className="flex justify-between py-2 border-b">
+            <div className="flex justify-between py-3 border-b border-gray-200">
               <span className="text-gray-600">Transmission</span>
               <span className="font-medium">{car.transmission}</span>
             </div>
-            <div className="flex justify-between py-2 border-b">
+            <div className="flex justify-between py-3 border-b border-gray-200">
               <span className="text-gray-600">Mileage</span>
               <span className="font-medium">
                 {car.mileage.toLocaleString()} miles
               </span>
             </div>
-            <div className="flex justify-between py-2 border-b">
+            <div className="flex justify-between py-3 border-b border-gray-200">
               <span className="text-gray-600">Color</span>
               <span className="font-medium">{car.color}</span>
             </div>
             {car.seats && (
-              <div className="flex justify-between py-2 border-b">
+              <div className="flex justify-between py-3 border-b border-gray-200">
                 <span className="text-gray-600">Seats</span>
                 <span className="font-medium">{car.seats}</span>
               </div>
@@ -377,19 +382,19 @@ export function CarDetails({ car, testDriveInfo }) {
       </div>
 
       {/* Dealership Location Section */}
-      <div className="mt-8 p-6 bg-white rounded-lg shadow-sm">
-        <h2 className="text-2xl font-bold mb-6">Dealership Location</h2>
-        <div className="bg-gray-50 rounded-lg p-6">
-          <div className="flex flex-col md:flex-row gap-6 justify-between">
+      <div className="mt-10 p-10 bg-white rounded-3xl shadow-sm">
+        <h2 className="text-2xl font-bold mb-10">Dealership Location</h2>
+        <div className="bg-gray-50 rounded-2xl p-8">
+          <div className="flex flex-col md:flex-row gap-10 justify-between">
             {/* Dealership Name and Address */}
-            <div className="flex items-start gap-3">
-              <LocateFixed className="h-5 w-5 text-blue-600 mt-1 flex-shrink-0" />
+            <div className="flex items-start gap-4">
+              <LocateFixed className="h-6 w-6 text-blue-600 mt-1 flex-shrink-0" />
               <div>
-                <h4 className="font-medium">Vehiql Motors</h4>
-                <p className="text-gray-600">
+                <h4 className="font-medium text-lg">Vehiql Motors</h4>
+                <p className="text-gray-600 mt-2">
                   {testDriveInfo.dealership?.address || "Not Available"}
                 </p>
-                <p className="text-gray-600 mt-1">
+                <p className="text-gray-600 mt-2">
                   Phone: {testDriveInfo.dealership?.phone || "Not Available"}
                 </p>
                 <p className="text-gray-600">
@@ -400,8 +405,8 @@ export function CarDetails({ car, testDriveInfo }) {
 
             {/* Working Hours */}
             <div className="md:w-1/2 lg:w-1/3">
-              <h4 className="font-medium mb-2">Working Hours</h4>
-              <div className="space-y-2">
+              <h4 className="font-medium text-lg mb-6">Working Hours</h4>
+              <div className="space-y-4">
                 {testDriveInfo.dealership?.workingHours
                   ? testDriveInfo.dealership.workingHours
                       .sort((a, b) => {
@@ -427,7 +432,7 @@ export function CarDetails({ car, testDriveInfo }) {
                             {day.dayOfWeek.charAt(0) +
                               day.dayOfWeek.slice(1).toLowerCase()}
                           </span>
-                          <span>
+                          <span className="font-medium">
                             {day.isOpen
                               ? `${day.openTime} - ${day.closeTime}`
                               : "Closed"}
@@ -446,7 +451,7 @@ export function CarDetails({ car, testDriveInfo }) {
                     ].map((day, index) => (
                       <div key={day} className="flex justify-between text-sm">
                         <span className="text-gray-600">{day}</span>
-                        <span>
+                        <span className="font-medium">
                           {index < 5
                             ? "9:00 - 18:00"
                             : index === 5
