@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Search, Camera, Upload } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useDropzone } from "react-dropzone";
@@ -14,6 +14,36 @@ const HomeSearch = () => {
   const [imagePreview, setImagePreview] = useState(null);
   const [isUploading, setIsUploading] = useState(false);
   const [isImageSearchActive, setIsImageSearchActive] = useState(false);
+  const {
+    loading: isProcessing,
+    fn: processImageFn,
+    data: processResult,
+    error: processError,
+  } = useFetch(processImageSearch);
+
+  useEffect(() => {
+    if (processResult?.success) {
+      const params = new URLSearchParams();
+
+      // Add extracted params to the search
+      if (processResult.data.make) params.set("make", processResult.data.make);
+      if (processResult.data.bodyType)
+        params.set("bodyType", processResult.data.bodyType);
+      if (processResult.data.color)
+        params.set("color", processResult.data.color);
+
+      // Redirect to search results
+      router.push(`/cars?${params.toString()}`);
+    }
+  }, [processResult, router]);
+
+  useEffect(() => {
+    if (processError) {
+      toast.error(
+        "Failed to analyze image: " + (processError.message || "Unknown error")
+      );
+    }
+  }, [processError]);
 
   const handleTextSubmit = (e) => {
     e.preventDefault();
@@ -33,24 +63,8 @@ const HomeSearch = () => {
       return;
     }
 
-    // add logic to upload image to supabase
-    // add logic to analyze image
-    // add logic to display results
+    await processImageFn(searchImage);
   };
-
-  //   const { getRootProps, getInputProps, isDragActive, isDragReject } =
-  //     useDropzone({
-  //       accept: { "image/*": [".png", ".jpg", ".jpeg"] },
-  //       maxSize: 5 * 1024 * 1024,
-  //       onDrop: (acceptedFiles) => {
-  //         setSearchImage(acceptedFiles[0]);
-  //         setImagePreview(URL.createObjectURL(acceptedFiles[0]));
-  //       },
-  //       onDragEnter: () => setIsDragActive(true),
-  //       onDragLeave: () => setIsDragActive(false),
-  //       onDragOver: (e) => e.preventDefault(),
-  //       onDrop: (e) => e.preventDefault(),
-  //     });
 
   const onDrop = (acceptedFiles) => {
     const file = acceptedFiles[0];
@@ -79,12 +93,6 @@ const HomeSearch = () => {
       reader.readAsDataURL(file);
     }
   };
-  const {
-    loading: isProcessing,
-    fn: processImageFn,
-    data: processResult,
-    error: processError,
-  } = useFetch(processImageSearch);
 
   const { getRootProps, getInputProps, isDragActive, isDragReject } =
     useDropzone({

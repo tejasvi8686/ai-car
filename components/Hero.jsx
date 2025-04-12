@@ -1,10 +1,9 @@
 "use client";
 
-import { Search, Car, Calendar, Star, ChevronRight, ArrowRight } from "lucide-react";
+import {  Car, Calendar, Star, ChevronRight, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import {
-  featuredCars,
   carMakes,
   features,
   bodyTypes,
@@ -20,7 +19,7 @@ import CarCard from "./CarCard";
 import Link from "next/link";
 import { SignedOut } from "@clerk/nextjs";
 import HomeSearch from "./HomeSearch";
-export default function Hero() {
+export default function   Hero({ featuredCars  }) {
   return (
     <main>
       {/* Hero Section */}

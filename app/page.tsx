@@ -1,9 +1,12 @@
+import { getFeaturedCars } from "@/actions/home";
 import Hero from "@/components/Hero";
 
-export default function Home() {
+export default async function Home() {
+  const featuredCars = await getFeaturedCars();
+
   return (
     <div className="">
-      <Hero />
+      <Hero featuredCars={featuredCars} />
     </div>
   );
 }
