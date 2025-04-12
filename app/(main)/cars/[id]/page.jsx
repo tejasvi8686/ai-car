@@ -1,11 +1,3 @@
-import React from 'react'
-
-const CarPage = ({ params }) => {
-  const { id } = params;
-  return <div>CarPage : {id}</div>;
-};
-
-export default CarPage;
 import { getCarById } from "@/actions/car-listing";
 import { CarDetails } from "./_components/car-details";
 import { notFound } from "next/navigation";
