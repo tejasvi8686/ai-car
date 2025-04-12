@@ -252,7 +252,7 @@ export function CarDetails({ car, testDriveInfo }) {
                 Our representatives are available to answer all your queries
                 about this vehicle.
               </p>
-              <a href="mailto:help@vehiql.in">
+              <a href="mailto:tejasviraj8686@gmail.com">
                 <Button variant="outline" className="w-full">
                   Request Info
                 </Button>
