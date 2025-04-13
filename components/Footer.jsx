@@ -1,7 +1,7 @@
 "use client";
 
 import { Car } from "lucide-react";
-
+import Link from "next/link";
 export default function Footer() {
   return (
     <footer className="bg-gradient-to-b from-gray-900 to-black text-white py-12 ">
@@ -17,27 +17,42 @@ export default function Footer() {
           <nav className="mb-8">
             <ul className="flex flex-wrap justify-center gap-8">
               <li>
-                <a href="#" className="text-gray-300 hover:text-blue-400 transition-colors">
+                <a
+                  href="#"
+                  className="text-gray-300 hover:text-blue-400 transition-colors"
+                >
                   Home
                 </a>
               </li>
               <li>
-                <a href="#" className="text-gray-300 hover:text-blue-400 transition-colors">
+                <a
+                  href="#"
+                  className="text-gray-300 hover:text-blue-400 transition-colors"
+                >
                   Search Cars
                 </a>
               </li>
               <li>
-                <a href="#" className="text-gray-300 hover:text-blue-400 transition-colors">
+                <a
+                  href="#"
+                  className="text-gray-300 hover:text-blue-400 transition-colors"
+                >
                   Test Drive
                 </a>
               </li>
               <li>
-                <a href="#" className="text-gray-300 hover:text-blue-400 transition-colors">
+                <a
+                  href="#"
+                  className="text-gray-300 hover:text-blue-400 transition-colors"
+                >
                   About Us
                 </a>
               </li>
               <li>
-                <a href="#" className="text-gray-300 hover:text-blue-400 transition-colors">
+                <a
+                  href="#"
+                  className="text-gray-300 hover:text-blue-400 transition-colors"
+                >
                   Contact
                 </a>
               </li>
@@ -49,7 +64,16 @@ export default function Footer() {
 
           {/* Copyright */}
           <div className="text-gray-400 text-sm">
-            <p>© 2025 Vehiql AI. Made with ❤️ by Tejasvi Raj</p>
+            <p>
+              © 2025 Vehiql AI. Made with ❤️ by{" "}
+              <Link
+                href="https://tejasviraj.vercel.app/"
+                target="_blank"
+                className="text-blue-400 hover:text-blue-500 transition-colors font-bold"
+              >
+                Tejasvi Raj
+              </Link>
+            </p>
           </div>
         </div>
       </div>
