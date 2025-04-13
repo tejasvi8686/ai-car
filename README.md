@@ -12,7 +12,7 @@
 
 Welcome to the **AI Car Marketplace**, a modern, AI-powered ecommerce-style platform for buying and selling cars. Built with cutting-edge tech including **React 19**, **Next.js 15**, **TailwindCSS**, **Supabase**, **Prisma**, and **Clerk**, it’s the perfect project to showcase your full-stack skillset!
 
-This marketplace features secure user authentication, data handling with Supabase and Prisma, AI features powered by Gemini API, and performance optimization with Arcjet. Ideal for learning modern tooling or impressing in job interviews!
+This marketplace features secure user authentication, data handling with Supabase and Prisma, AI features powered by Gemini API, and performance optimization with Arcjet. Ideal for learning modern tooling.
 
 ## 💻 Technologies Used
 
