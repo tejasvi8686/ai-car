@@ -18,6 +18,8 @@ import {
   Loader2,
   Car as CarIcon,
 } from "lucide-react";
+import Loader from "@/public/animation/loader.json"
+import Lottie from "lottie-react";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -183,7 +185,8 @@ const CarList = () => {
         <CardContent className="p-0">
           {loadingCars && !carsData ? (
             <div className="flex justify-center items-center py-12">
-              <Loader2 className="h-8 w-8 animate-spin text-gray-400" />
+              <Lottie animationData={Loader} loop={true} />
+            
             </div>
           ) : carsData?.success && carsData.data.length > 0 ? (
             <div className="overflow-x-auto">

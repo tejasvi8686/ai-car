@@ -15,6 +15,8 @@ import {
 
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
+import Lottie from "lottie-react";
+import Loader from "@/public/animation/loader.json";
 import {
   Card,
   CardContent,
@@ -356,7 +358,7 @@ export const SettingsForm = () => {
 
               {fetchingUsers ? (
                 <div className="py-12 flex justify-center">
-                  <Loader2 className="h-8 w-8 animate-spin text-gray-400" />
+                  <Lottie animationData={Loader} loop={true} />
                 </div>
               ) : usersData?.success && filteredUsers.length > 0 ? (
                 <div className="overflow-x-auto">

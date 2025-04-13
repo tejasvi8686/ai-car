@@ -24,6 +24,8 @@ import { TestDriveCard } from "@/components/test-drive-card";
 import useFetch from "@/hooks/use-fetch";
 import { getAdminTestDrives, updateTestDriveStatus } from "@/actions/admin";
 import { cancelTestDrive } from "@/actions/test-drive";
+import Lottie from "lottie-react";
+import Loader from "@/public/animation/loader.json";
 
 export const TestDrivesList = () => {
   const [search, setSearch] = useState("");
@@ -157,7 +159,7 @@ export const TestDrivesList = () => {
         <CardContent className="pt-6">
           {fetchingTestDrives && !testDrivesData ? (
             <div className="flex justify-center items-center py-12">
-              <Loader2 className="h-8 w-8 animate-spin text-blue-600" />
+              <Lottie animationData={Loader} loop={true} />
             </div>
           ) : testDrivesError ? (
             <Alert variant="destructive" className="bg-red-50 border-red-200">

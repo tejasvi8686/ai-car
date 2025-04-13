@@ -11,6 +11,9 @@ const inter = Inter({ subsets: ["latin"] });
 export const metadata: Metadata = {
   title: "Vehiql AI",
   description: "Find your Dream Car with Vehiql AI",
+  icons: {
+    icon: "/logo.png",
+  },
 };
 
 export default function RootLayout({
