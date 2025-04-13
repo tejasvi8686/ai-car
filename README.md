@@ -43,6 +43,60 @@ This marketplace features secure user authentication, data handling with Supabas
 
 ## 🌐 Environment Variables
 
+.
+├── .clerk/                      # Clerk auth configuration
+├── .next/                       # Next.js build output
+├── actions/                     # Server-side actions
+│   ├── admin.js
+│   ├── car-listing.js
+│   ├── cars.js
+│   ├── home.js
+│   ├── settings.js
+│   └── test-drive.js
+├── app/                         # App router directory
+│   ├── (admin)/                 # Admin pages
+│   │   ├── admin/
+│   │   └── layout.js
+│   ├── (auth)/                  # Authentication pages
+│   │   ├── sign-in/
+│   │   ├── sign-up/
+│   │   └── layout.jsx
+│   ├── (main)/                  # Main app sections
+│   │   ├── cars/
+│   │   ├── reservations/
+│   │   ├── saved-cars/
+│   │   ├── test-drive/
+│   │   └── layout.js
+│   └── waitlist/               # Waitlist feature
+├── components/                  # Reusable UI components
+│   └── ui/
+│       ├── CarCard.jsx
+│       ├── car-card.jsx
+│       ├── Footer.jsx
+│       ├── Header.jsx
+│       ├── Hero.jsx
+│       ├── HomeSearch.jsx
+│       ├── Lottie.jsx
+│       └── test-drive-card.jsx
+├── hooks/                       # Custom React hooks
+├── lib/                         # Helper libraries and utilities
+├── prisma/                      # Prisma schema and config
+├── public/                      # Static assets
+├── .env                         # Environment variables
+├── .env.local                   # Local environment overrides
+├── .gitignore                   # Git ignore rules
+├── components.json              # Shadcn or custom UI config
+├── eslint.config.mjs           # ESLint configuration
+├── middleware.js                # Middleware logic
+├── next-env.d.ts                # TypeScript Next.js env declarations
+├── next.config.ts               # Next.js config
+├── package.json                 # Project dependencies
+├── package-lock.json            # Dependency lock file
+├── postcss.config.mjs           # PostCSS config
+├── README.md                    # Project documentation
+└── tsconfig.json                # TypeScript configuration
+
+
 ```env
 DATABASE_URL=your_database_url
 DIRECT_URL=your_direct_url
