@@ -111,3 +111,8 @@ ARCJET_KEY=your_arcjet_key
 ├── postcss.config.mjs           # PostCSS config
 ├── README.md                    # Project documentation
 └── tsconfig.json                # TypeScript configuration
+
+git clone [your-repository-link]
+cd [your-repository-name]
+npm install
+npm run dev
