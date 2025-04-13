@@ -1,8 +1,8 @@
 # 🚗 Full Stack AI Car Marketplace – React, Next.js, Prisma, Supabase, Gemini API, Clerk, Tailwind 🔥
 
-![GitHub stars](https://img.shields.io/github/stars/yourusername/ai-car?style=social)&nbsp;&nbsp;
-![GitHub forks](https://img.shields.io/github/forks/yourusername/ai-car?style=social)&nbsp;&nbsp;
-![Github Followers](https://img.shields.io/github/followers/yourusername.svg?style=social&label=Follow)&nbsp;&nbsp;
+![GitHub stars](https://img.shields.io/github/stars/tejasvi8686/ai-car?style=social)&nbsp;&nbsp;
+![GitHub forks](https://img.shields.io/github/forks/tejasvi8686/ai-car?style=social)&nbsp;&nbsp;
+![Github Followers](https://img.shields.io/github/followers/tejasvi8686.svg?style=social&label=Follow)&nbsp;&nbsp;
 
 ---
 ### ⭐ Don't forget to star this repository if you find it helpful!
