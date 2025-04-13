@@ -100,7 +100,7 @@ export const TestDrivesList = () => {
   };
 
   return (
-    <div className="space-y-4">
+    <div className="space-y-6 p-6">
       {/* Filters and Search */}
       <div className="flex flex-col sm:flex-row gap-4 items-start sm:items-center justify-between">
         <div className="flex flex-col sm:flex-row gap-4 w-full">
@@ -110,7 +110,7 @@ export const TestDrivesList = () => {
             onValueChange={setStatusFilter}
             className="w-full sm:w-48"
           >
-            <SelectTrigger>
+            <SelectTrigger className="bg-gray-50 border-gray-200">
               <SelectValue placeholder="All Statuses" />
             </SelectTrigger>
             <SelectContent>
@@ -126,16 +126,16 @@ export const TestDrivesList = () => {
           {/* Search Form */}
           <form onSubmit={handleSearchSubmit} className="flex w-full">
             <div className="relative flex-1">
-              <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-gray-500" />
+              <Search className="absolute left-3 top-2.5 h-4 w-4 text-gray-400" />
               <Input
                 type="search"
                 placeholder="Search by car or customer..."
-                className="pl-9 w-full"
+                className="pl-10 w-full bg-gray-50 border-gray-200 focus:ring-2 focus:ring-blue-500"
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
               />
             </div>
-            <Button type="submit" className="ml-2">
+            <Button type="submit" className="ml-2 bg-blue-600 hover:bg-blue-700">
               Search
             </Button>
           </form>
@@ -143,27 +143,27 @@ export const TestDrivesList = () => {
       </div>
 
       {/* Test Drives List */}
-      <Card>
-        <CardHeader>
-          <CardTitle className="flex items-center gap-2">
-            <CalendarRange className="h-5 w-5" />
+      <Card className="border-0 shadow-none">
+        <CardHeader className="border-b border-gray-100 pb-4">
+          <CardTitle className="flex items-center gap-2 text-xl">
+            <CalendarRange className="h-5 w-5 text-blue-600" />
             Test Drive Bookings
           </CardTitle>
-          <CardDescription>
+          <CardDescription className="text-gray-600">
             Manage all test drive reservations and update their status
           </CardDescription>
         </CardHeader>
 
-        <CardContent>
+        <CardContent className="pt-6">
           {fetchingTestDrives && !testDrivesData ? (
             <div className="flex justify-center items-center py-12">
-              <Loader2 className="h-8 w-8 animate-spin text-gray-400" />
+              <Loader2 className="h-8 w-8 animate-spin text-blue-600" />
             </div>
           ) : testDrivesError ? (
-            <Alert variant="destructive">
-              <AlertCircle className="h-4 w-4" />
-              <AlertTitle>Error</AlertTitle>
-              <AlertDescription>
+            <Alert variant="destructive" className="bg-red-50 border-red-200">
+              <AlertCircle className="h-4 w-4 text-red-600" />
+              <AlertTitle className="text-red-800">Error</AlertTitle>
+              <AlertDescription className="text-red-700">
                 Failed to load test drives. Please try again.
               </AlertDescription>
             </Alert>
@@ -200,7 +200,7 @@ export const TestDrivesList = () => {
                         }
                         disabled={updatingStatus}
                       >
-                        <SelectTrigger className="w-full h-8">
+                        <SelectTrigger className="w-full h-8 bg-gray-50 border-gray-200">
                           <SelectValue placeholder="Update Status" />
                         </SelectTrigger>
                         <SelectContent>

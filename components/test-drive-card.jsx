@@ -67,7 +67,7 @@ export function TestDriveCard({
   return (
     <>
       <Card
-        className={`overflow-hidden ${
+        className={`overflow-hidden py-0  ${
           isPast ? "opacity-80 hover:opacity-100 transition-opacity" : ""
         }`}
       >
@@ -105,18 +105,18 @@ export function TestDriveCard({
             {renderStatusSelector()}
 
             <div className="space-y-2 my-2">
-              <div className="flex items-center text-gray-600">
+              <div className="flex items-center text-gray-600 text-sm">
                 <Calendar className="h-4 w-4 mr-2" />
                 {format(new Date(booking.bookingDate), "EEEE, MMMM d, yyyy")}
               </div>
-              <div className="flex items-center text-gray-600">
+              <div className="flex items-center text-gray-600 text-sm">
                 <Clock className="h-4 w-4 mr-2" />
                 {formatTime(booking.startTime)} - {formatTime(booking.endTime)}
               </div>
 
               {/* Show customer info in admin view */}
               {isAdmin && booking.user && (
-                <div className="flex items-center text-gray-600">
+                <div className="flex items-center text-gray-600 text-sm">
                   <User className="h-4 w-4 mr-2" />
                   {booking.user.name || booking.user.email}
                 </div>
@@ -126,7 +126,7 @@ export function TestDriveCard({
 
           {/* Action Buttons - Right */}
           {showActions && (
-            <div className="p-4 border-t sm:border-t-0 sm:border-l sm:w-1/4 sm:flex sm:flex-col sm:justify-center sm:items-center sm:space-y-2">
+            <div className="p-4 border-t sm:border-t-0 sm:border-l sm:w-1/4 sm:flex sm:flex-col sm:justify-center gap-2 sm:items-center sm:space-y-2">
               {/* Show notes if any */}
               {booking.notes && (
                 <div className="bg-gray-50 p-2 rounded text-sm w-full">
