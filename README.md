@@ -1,36 +1,53 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🚗 Full Stack AI Car Marketplace – React, Next.js, Prisma, Supabase, Gemini API, Clerk, Tailwind 🔥
 
-## Getting Started
+![GitHub stars](https://img.shields.io/github/stars/yourusername/ai-car?style=social)&nbsp;&nbsp;
+![GitHub forks](https://img.shields.io/github/forks/yourusername/ai-car?style=social)&nbsp;&nbsp;
+![Github Followers](https://img.shields.io/github/followers/yourusername.svg?style=social&label=Follow)&nbsp;&nbsp;
 
-First, run the development server:
+---
+### ⭐ Don't forget to star this repository if you find it helpful!
+---
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## 📑 Introduction
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Welcome to the **AI Car Marketplace**, a modern, AI-powered ecommerce-style platform for buying and selling cars. Built with cutting-edge tech including **React 19**, **Next.js 15**, **TailwindCSS**, **Supabase**, **Prisma**, and **Clerk**, it’s the perfect project to showcase your full-stack skillset!
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+This marketplace features secure user authentication, data handling with Supabase and Prisma, AI features powered by Gemini API, and performance optimization with Arcjet. Ideal for learning modern tooling or impressing in job interviews!
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 💻 Technologies Used
 
-## Learn More
+- **React 19** – For high-performance UI
+- **Next.js 15 (App Router)** – Modern full-stack React framework
+- **Tailwind CSS + Shadcn UI** – Rapid and responsive styling
+- **Prisma ORM** – Type-safe database access
+- **Supabase** – Open-source Firebase alternative
+- **Clerk Auth** – Seamless authentication & user management
+- **Gemini API** – AI-powered enhancements
+- **Arcjet** – Edge protection and performance
 
-To learn more about Next.js, take a look at the following resources:
+## ✨ Features
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- 🔒 **Authentication**: Sign in/up via Clerk
+- 🚘 **Car Listings**: Post and view AI-enhanced car listings
+- 📸 **Image Upload**: Upload and preview car photos
+- 🎨 **Modern UI**: Built with Radix UI, Shadcn UI, Tailwind
+- 🧠 **AI Integration**: Gemini API to enhance metadata
+- ⚡ **Performance**: Fast, scalable with Arcjet CDN
+- 📱 **Responsive**: Works beautifully across devices
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## 🌐 Environment Variables
 
-## Deploy on Vercel
+```env
+DATABASE_URL=your_database_url
+DIRECT_URL=your_direct_url
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=your_clerk_public_key
+CLERK_SECRET_KEY=your_clerk_secret_key
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+NEXT_PUBLIC_CLERK_SIGN_IN_URL=/sign-in
+NEXT_PUBLIC_CLERK_SIGN_UP_URL=/sign-up
+NEXT_PUBLIC_CLERK_AFTER_SIGN_IN_URL=/onboarding
+NEXT_PUBLIC_CLERK_AFTER_SIGN_UP_URL=/onboarding
+
+GEMINI_API_KEY=your_gemini_key
+ARCJET_KEY=your_arcjet_key
