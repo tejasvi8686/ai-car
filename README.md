@@ -4,15 +4,15 @@
 ![GitHub forks](https://img.shields.io/github/forks/tejasvi8686/ai-car?style=social)&nbsp;&nbsp;
 ![Github Followers](https://img.shields.io/github/followers/tejasvi8686.svg?style=social&label=Follow)&nbsp;&nbsp;
 
+---
+### ⭐ Don't forget to star this repository if you find it helpful!
+---
+
 <p align="center">
 
   <img src="https://i.ibb.co/Q7b8cT0D/Screenshot-2025-04-13-at-2-27-57-PM.png" width="1000" title="hover text">
   
 </p>
-
----
-### ⭐ Don't forget to star this repository if you find it helpful!
----
 
 ## 📑 Introduction
 
