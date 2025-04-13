@@ -217,7 +217,7 @@ export function CarDetails({ car, testDriveInfo }) {
               <span className="text-sm font-medium">{car.transmission}</span>
             </div>
           </div>
-
+ 
           <Dialog>
             <DialogTrigger className="w-full">
               <Card className="hover:shadow-lg transition-all duration-300 rounded-2xl border border-gray-100 p-2">
