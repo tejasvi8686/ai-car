@@ -43,6 +43,22 @@ This marketplace features secure user authentication, data handling with Supabas
 
 ## 🌐 Environment Variables
 
+```env
+DATABASE_URL=your_database_url
+DIRECT_URL=your_direct_url
+
+NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=your_clerk_public_key
+CLERK_SECRET_KEY=your_clerk_secret_key
+
+NEXT_PUBLIC_CLERK_SIGN_IN_URL=/sign-in
+NEXT_PUBLIC_CLERK_SIGN_UP_URL=/sign-up
+NEXT_PUBLIC_CLERK_AFTER_SIGN_IN_URL=/onboarding
+NEXT_PUBLIC_CLERK_AFTER_SIGN_UP_URL=/onboarding
+
+GEMINI_API_KEY=your_gemini_key
+ARCJET_KEY=your_arcjet_key
+
+
 .
 ├── .clerk/                      # Clerk auth configuration
 ├── .next/                       # Next.js build output
@@ -95,19 +111,3 @@ This marketplace features secure user authentication, data handling with Supabas
 ├── postcss.config.mjs           # PostCSS config
 ├── README.md                    # Project documentation
 └── tsconfig.json                # TypeScript configuration
-
-
-```env
-DATABASE_URL=your_database_url
-DIRECT_URL=your_direct_url
-
-NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=your_clerk_public_key
-CLERK_SECRET_KEY=your_clerk_secret_key
-
-NEXT_PUBLIC_CLERK_SIGN_IN_URL=/sign-in
-NEXT_PUBLIC_CLERK_SIGN_UP_URL=/sign-up
-NEXT_PUBLIC_CLERK_AFTER_SIGN_IN_URL=/onboarding
-NEXT_PUBLIC_CLERK_AFTER_SIGN_UP_URL=/onboarding
-
-GEMINI_API_KEY=your_gemini_key
-ARCJET_KEY=your_arcjet_key
